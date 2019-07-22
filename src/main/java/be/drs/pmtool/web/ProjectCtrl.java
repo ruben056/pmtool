@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/project")
@@ -30,7 +31,10 @@ public class ProjectCtrl {
                                                     BindingResult result){
         if(result.hasErrors()){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Invalid Project object");
+                    .body(result.getFieldErrors().stream()
+                            .collect(Collectors.toMap(
+                                    fieldError -> fieldError.getField(),
+                                    fieldError -> fieldError.getDefaultMessage())));
         }
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(this.projectServices.saveOrUpdate(project));
