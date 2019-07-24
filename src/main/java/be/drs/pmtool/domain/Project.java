@@ -3,6 +3,7 @@ package be.drs.pmtool.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.Singular;
+import org.springframework.stereotype.Indexed;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -46,4 +47,8 @@ public class Project {
     }
 
 
+    public static void main(String[] args) {
+        Project project = new Project();
+
+    }
 }
