@@ -37,4 +37,12 @@ public class ProjectServices {
         }
     }
 
+    public Project findProjectById(String projectIdentifier){
+        Project project = repository.findByProjectIdentifier(projectIdentifier);
+        if(project == null){
+            throw new ProjectIdentifierException("No project with identifier " + projectIdentifier + "' exists.");
+        }
+        return project;
+    }
+
 }

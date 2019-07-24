@@ -12,3 +12,10 @@ Remarks:
              * - als exception is annotated as responseStatus BadRequest,
              * but we manually set the responseStatus in the controllerAdvice...
              */
+
+
+             - lesson16:
+              Service use bad errorhandling, response should not be BAD_REQUEST
+              bud 404/NOT_FOUND.
+              Also using Optional in repository would be better
+              then to check for null in the service and then throw en error...

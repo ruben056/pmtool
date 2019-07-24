@@ -30,4 +30,10 @@ public class ProjectCtrl {
                         .status(HttpStatus.CREATED)
                         .body(this.projectServices.saveOrUpdate(project)));
     }
+
+    @GetMapping("/{projectIdentifier}")
+    public ResponseEntity<?> getProjectById(@PathVariable String projectIdentifier){
+        return ResponseEntity.ok().body(
+                projectServices.findProjectById(projectIdentifier));
+    }
 }
