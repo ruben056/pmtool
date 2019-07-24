@@ -37,8 +37,8 @@ public class ProjectServices {
         }
     }
 
-    public Project findProjectById(String projectIdentifier){
-        Project project = repository.findByProjectIdentifier(projectIdentifier);
+    public Project findProjectByIdentifier(String projectIdentifier){
+        Project project = repository.findByProjectIdentifier(projectIdentifier.toUpperCase());
         if(project == null){
             throw new ProjectIdentifierException("No project with identifier " + projectIdentifier + "' exists.");
         }
@@ -47,6 +47,11 @@ public class ProjectServices {
 
     public Iterable<Project> findAllProjects(){
         return repository.findAll();
+    }
+
+    public void deleteProjectByIdentifier(String projectIdentifier){
+        Project project2Delete = findProjectByIdentifier(projectIdentifier);
+        repository.delete(project2Delete);
     }
 
 }

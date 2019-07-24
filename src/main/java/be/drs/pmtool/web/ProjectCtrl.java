@@ -39,6 +39,11 @@ public class ProjectCtrl {
     @GetMapping("/{projectIdentifier}")
     public ResponseEntity<?> getProjectById(@PathVariable String projectIdentifier){
         return ResponseEntity.ok().body(
-                projectServices.findProjectById(projectIdentifier));
+                projectServices.findProjectByIdentifier(projectIdentifier));
+    }
+
+    @DeleteMapping("/{projectIdentifier}")
+    public void deleteProjectById(@PathVariable String projectIdentifier){
+        projectServices.deleteProjectByIdentifier(projectIdentifier);
     }
 }
