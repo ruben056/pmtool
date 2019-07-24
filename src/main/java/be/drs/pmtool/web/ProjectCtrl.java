@@ -31,6 +31,11 @@ public class ProjectCtrl {
                         .body(this.projectServices.saveOrUpdate(project)));
     }
 
+    @GetMapping("/all")
+    public Iterable<Project> getAllProjects(){
+        return projectServices.findAllProjects();
+    }
+
     @GetMapping("/{projectIdentifier}")
     public ResponseEntity<?> getProjectById(@PathVariable String projectIdentifier){
         return ResponseEntity.ok().body(

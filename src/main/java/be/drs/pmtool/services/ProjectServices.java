@@ -45,4 +45,8 @@ public class ProjectServices {
         return project;
     }
 
+    public Iterable<Project> findAllProjects(){
+        return repository.findAll();
+    }
+
 }
